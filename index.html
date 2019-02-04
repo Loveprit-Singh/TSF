@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap@4.0.5" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <script data-require="bootstrap@4.0.5" data-semver="4.0.5" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
+    <script data-require="angularjs@1.6.2" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body class="container" ng-app="myApp" ng-controller="studentController" ng-cloak>
+
+    <h1>Credit managment App.............</h1>
+
+    <!--Form-->
+    <form ng-submit="createUser()">
+        <div class="container">
+            <h1>Hello World!</h1>
+            <div class ="row"> 
+            <div class="col-md-6">
+                <div class="form-group" ng-show="total">
+                    <label class="control-label col-md-4">Total Credits:</label>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" ng-model="user.credits"/>
+                    </div>
+                  </div>
+                  <div class="form-group" ng-show="sub">
+                    <label class="control-label col-md-8">How many want to send</label>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" ng-model="user.id" id="money"/>
+                    </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" ng-show="reciverCredits">
+                    <label class="control-label col-md-4">Reciver:</label>
+                    <div class="col-md-6">
+                        <h1>{{user.name}}</h1>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div> 
+    
+      </div>
+      <div class="col-md-offset-2 col-md-5">
+      <input type="submit" value="submit" class="btn btn-success btn-sm" ng-show="submit" />
+      <input type="button" value="Send" ng-click="updateUser()" class="btn btn-success btn-sm" ng-show="update" />
+      <input type="button" value="cancel" ng-click="cancelUpdate()" class="btn btn-danger btn-sm" ng-show="cancel" />
+      </div>
+    </form>
+    <!--End Form-->
+
+    <!--Users List-->
+    <br />
+    <h4>Users List</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Credits</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>
+            {{user._id}}
+          </td>
+          <td>
+            {{user.name}}
+          </td>
+          <td>
+            {{user.email}}
+          </td>
+          <td>
+            {{user.credits}}
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm" ng-click="editUser(user)">Send Credit</button>
+            <button class="btn btn-danger btn-sm" ng-click="deleteUser(user)">Delete</button>
+            <button class="btn btn-success btn-sm" ng-click="reciver(user)" nd-show="rec">Reciever</button>
+
+          </td>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </body>
+
+</html>
